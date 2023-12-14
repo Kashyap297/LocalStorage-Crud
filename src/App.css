@@ -36,3 +36,83 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* custom css */
+*{
+  font-family: 'Afacad', sans-serif !important;
+}
+body{
+  background-color: #212529 !important;
+}
+.crimson{
+  color: crimson;
+}
+/* .center{
+   height: 50vh;
+} */
+.control-form{
+  outline: gray;
+  border-radius: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.432);
+  padding: 8px 13px;
+  font-weight: bold;
+  width: 100%;
+}
+.ri-user-2-fill{
+  font-size: 22px;
+  color: crimson;
+}
+.ri-mail-line{
+  font-size: 22px;
+  color: crimson;
+}
+input:focus{
+  outline: crimson;
+  border: 1px solid crimson;
+}
+button{
+  background-color: crimson;
+  color: white;
+  transition: all 0.1s ease-in-out;
+  font-size: 18px !important;
+}
+button:active{
+  background-color: white;
+  color: crimson;
+  border: 1px solid crimson;
+  transition: all 0.1s ease-in-out;
+}
+.table{
+  --bs-table-striped-bg: rgba(128, 128, 128, 0.123)!important;
+}
+.edit-btn{
+  background-color: rgba(31, 107, 31, 0.555);
+  color: white;
+  transition: all 0.1s ease-in-out;
+  font-size: 18px !important;
+  border-radius: 10px;
+  padding: 5px 15px;
+  border: 1px solid transparent;
+}
+.edit-btn:active{
+  border: 1px solid green;
+  color: green;
+}
+.dlt-btn{
+  background-color: rgba(220, 20, 60, 0.767);
+  color: white;
+  transition: all 0.1s ease-in-out;
+  font-size: 18px !important;
+  border-radius: 10px;
+  padding: 5px 15px;
+  border: 1px solid transparent;
+}
+th{
+  font-size: 20px;
+  color: rgb(90, 90, 90) !important;
+}
+td{
+  font-size: 19px;
+  color: rgb(90, 90, 90) !important;
+}
