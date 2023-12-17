@@ -1,15 +1,15 @@
 import React from 'react'
 
 
-const Table = ({ datas, setDatas}) => {
+const Table = ({ datas, setDatas }) => {
 
-    const handleDelete = (index) =>{
+    const handleDelete = (index) => {
         // console.log(index);
         const temp = [...datas]
         temp.splice(index, 1)
 
         setDatas(temp)
-        localStorage.setItem('data', JSON.stringify(datas));
+        localStorage.getItem('data')
     }
     return (
         <>
