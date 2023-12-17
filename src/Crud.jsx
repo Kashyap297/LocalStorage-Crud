@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -16,8 +16,18 @@ const Crud = () => {
     const [edit, setEdit] = useState(false)
     const [editIndex, setEditIndex] = useState(null)
     const [button, setButton] = useState(false)
+    const [noRecords, setNoRecords] = useState(false);
 
-    useEffect(() =>{
+    useEffect(() => {
+        // Check if there is no data
+        if (datas.length === 0) {
+            setNoRecords(true);
+        } else {
+            setNoRecords(false);
+        }
+    }, [datas]);
+
+    useEffect(() => {
         localStorage.setItem('users', JSON.stringify(datas))
     }, [datas])
 
@@ -47,19 +57,19 @@ const Crud = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-
         const validate = checkValidate(input)
         setErrors(validate)
         const check = Object.keys(validate)
         if (check.length < 1) {
             setDatas([...datas, input])
             setInput(initialValue)
+
         }
-        if(edit){
+        if (edit) {
             datas[editIndex] = input;
             setDatas(datas)
             setEdit(false)
-            
+
         }
         setButton(false)
     }
@@ -127,16 +137,26 @@ const Crud = () => {
                             </thead>
                             <tbody className='text-center'>
                                 {
-                                    datas.map((data, index) => {
-                                        return (
-                                            <tr key={index}>
-                                                <td>{data.name}</td>
-                                                <td>{data.email}</td>
-                                                <td>{data.address}</td>
-                                                <td><button className='edit-btn me-2' onClick={() => handleEdit(index)}>Edit</button> <button className='dlt-btn' onClick={() => handleDelete(index)}>Delete</button></td>
-                                            </tr>
-                                        )
-                                    })
+
+                                    noRecords ? (
+                                        <>
+                                        <td className='text-center fw-bold text-white pe-0 py-3' colSpan={4}>Empty Records</td>
+                                        <td className='p-0'></td>
+                                        <td className='p-0'></td>
+                                        <td className='p-0'></td>
+                                        </>
+                                    ) : (
+                                        datas.map((data, index) => {
+                                            return (
+                                                <tr key={index}>
+                                                    <td>{data.name}</td>
+                                                    <td>{data.email}</td>
+                                                    <td>{data.address}</td>
+                                                    <td><button className='edit-btn me-2' onClick={() => handleEdit(index)}>Edit</button> <button className='dlt-btn' onClick={() => handleDelete(index)}>Delete</button></td>
+                                                </tr>
+                                            )
+                                        })
+                                    )
                                 }
                             </tbody>
                         </table>
